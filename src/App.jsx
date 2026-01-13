@@ -8,6 +8,8 @@ function App() {
       <Hero />
       <News />
       <About />
+      <Founders />
+      <Partners />
       <Contact />
       <Footer />
     </div>
@@ -133,9 +135,34 @@ function About() {
               The platform makes it easy for Horizon 2020 and Horizon Europe beneficiaries to comply with the open access terms of their funding and offers researchers a publishing venue to share their results and insights rapidly and facilitate open, constructive research discussion.
             </p>
           </div>
-          <div className="about-image">
-            [About Image / Infographic Placeholder]
-          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Founders() {
+  return (
+    <section className="logos-section alt-bg">
+      <div className="container">
+        <h2>Founders</h2>
+        <div className="logos-grid">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/European_Commission.svg" alt="European Commission" className="logo-item" style={{ height: '80px' }} />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Partners() {
+  return (
+    <section className="logos-section">
+      <div className="container">
+        <h2>Partners</h2>
+        <div className="logos-grid">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/CERN_logo.png" alt="CERN" className="logo-item" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/ANR_Logo.svg" alt="ANR" className="logo-item" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Cnrs-logo.svg" alt="CNRS" className="logo-item" />
         </div>
       </div>
     </section>
@@ -173,12 +200,7 @@ function Footer() {
       <div className="container">
         <div className="footer-powered">POWERED BY CERN</div>
         <div className="funder-logos">
-          {/* Placeholders for funder logos */}
-          <div className="funder-logo"></div>
-          <div className="funder-logo"></div>
-          <div className="funder-logo"></div>
-          <div className="funder-logo"></div>
-          <div className="funder-logo"></div>
+          {/* Placeholders removed */}
         </div>
       </div>
     </footer>
