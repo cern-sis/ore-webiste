@@ -1,0 +1,17 @@
+{
+  "name": "ore",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1",
+    "vite-plugin-react": "^4.0.0"
+  }
+}
