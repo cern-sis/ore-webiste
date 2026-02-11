@@ -340,73 +340,6 @@
       transform: scale(1.05);
     }
 
-    /* Partners Section (Small variant) */
-    .partners-section {
-      padding: 4rem 0;
-      background-color: #f9f9f9;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .partners-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 3rem;
-    }
-
-    .partners-content {
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-    }
-
-    .partners-content h3 {
-      font-family: var(--font-serif);
-      font-size: 1.6rem;
-      color: var(--color-helvetia-blue);
-      margin: 0;
-      font-weight: 500;
-    }
-
-    .partners-links {
-      display: flex;
-      gap: 3rem;
-      align-items: center;
-      justify-content: flex-start;
-    }
-
-    .logo-item-small {
-      height: 50px;
-      width: auto;
-      max-width: 160px;
-      object-fit: contain;
-      filter: grayscale(100%);
-      opacity: 0.7;
-      transition: all 0.3s;
-      flex-shrink: 0;
-    }
-
-    .logo-item-small:hover {
-      filter: grayscale(0%);
-      opacity: 1;
-    }
-
-    .powered-by-cern {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      padding-left: 3rem;
-      border-left: 1px solid var(--color-border);
-      flex-shrink: 0;
-    }
-
-    .cern-logo-tiny {
-      height: 45px;
-      width: auto;
-      opacity: 1;
-      display: block;
-    }
-
     .powered-by-text {
       font-family: var(--font-brand);
       font-size: 0.9rem;
@@ -463,6 +396,59 @@
     }
 
 
+
+
+    /* Mosaic Strip */
+    .mosaic-strip {
+      display: flex;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      background-color: var(--color-deep-black);
+    }
+
+    .mosaic-item {
+      flex: 1;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mosaic-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mosaic-item.circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-deep-black);
+    }
+
+    .mosaic-item.circle img {
+      width: 90%;
+      height: 90%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 4rem 0;
+      background-color: var(--color-arctic-white);
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .footer-logo {
+      height: 60px;
+      width: auto;
+      display: block;
+      margin: 0 auto;
+    }
 
     /* Modal */
     .modal-overlay {
@@ -560,6 +546,10 @@
         <h1>Open research, shared knowledge</h1>
       </div>
     </section>
+
+
+    <!-- Mosaic Strip -->
+    <section class="mosaic-strip" id="mosaic-strip"></section>
 
     <!-- About -->
     <section id="about" class="about-section">
@@ -723,29 +713,31 @@
       </div>
     </section>
 
-    <!-- Partners (Redesigned) -->
-    <section class="partners-section">
-      <div class="container partners-container">
-        <div class="partners-content">
-          <h3>Partners</h3>
-          <div class="partners-links">
-            <!-- OPERAS -->
-            <a href="https://operas-eu.org/" target="_blank" rel="noopener noreferrer">
-              <img src="assets/funders/OPERAS/cropped-OPERAS-LOgo-website-small.png" alt="OPERAS"
-                class="logo-item-small">
-            </a>
-            <!-- Science Europe -->
-            <a href="https://www.scienceeurope.org/" target="_blank" rel="noopener noreferrer">
-              <img src="assets/funders/ScienceEurope/logo.png" alt="Science Europe" class="logo-item-small">
-            </a>
-          </div>
+    <!-- Partners -->
+    <section class="logos-section">
+      <div class="container">
+        <h2>Partners</h2>
+        <div class="logos-grid">
+          <!-- OPERAS -->
+          <a href="https://operas-eu.org/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/funders/OPERAS/cropped-OPERAS-LOgo-website-small.png" alt="OPERAS" class="logo-item">
+          </a>
+          <!-- Science Europe -->
+          <a href="https://www.scienceeurope.org/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/funders/ScienceEurope/logo.png" alt="Science Europe" class="logo-item">
+          </a>
         </div>
-        <div class="powered-by-cern">
-          <img src="assets/funders/CERN/Outline/PNG/LogoOutline-Blue.png" alt="CERN" class="cern-logo-tiny">
-          <span class="powered-by-text">Powered by CERN</span>
-        </div>
+
+
       </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <img src="assets/ore_cern.svg" alt="Open Research Europe & CERN" class="footer-logo">
+      </div>
+    </footer>
 
   </div>
 
@@ -808,6 +800,44 @@
 
       window.location.href = `mailto:?to=ore.secretariat@cern.ch&subject=${subject}&body=${body}`;
     }
+
+    // Mosaic Strip Logic
+    function initMosaic() {
+      const container = document.getElementById('mosaic-strip');
+      if (!container) return;
+
+      const allImages = [
+        '1.jpg', '10.jpg', '2 2.jpg', '2 3.jpg', '2 4.jpg', '2.jpg',
+        '3 2.jpg', '3.jpg', '4 2.jpg', '4 3.jpg', '4.jpg',
+        '5 2.jpg', '5 3.jpg', '5.jpg', '6 2.jpg', '6.jpg', '7.jpg'
+      ];
+
+      // Shuffle and pick 7
+      const shuffled = allImages.sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, 7);
+
+      // Pattern: some squares, some circles to match screenshot feel
+      // Indices for circles: 2, 4, 5 (3rd, 5th, 6th)
+      const circleIndices = [2, 4, 5];
+
+      selected.forEach((imgSrc, index) => {
+        const item = document.createElement('div');
+        item.className = 'mosaic-item';
+        if (circleIndices.includes(index)) {
+          item.classList.add('circle');
+        }
+
+        const img = document.createElement('img');
+        img.src = `assets/images/${encodeURIComponent(imgSrc)}`;
+        img.alt = `ORE Mosaic Image ${index + 1}`;
+
+        item.appendChild(img);
+        container.appendChild(item);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initMosaic);
+
   </script>
 </body>
 
