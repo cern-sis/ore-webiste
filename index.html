@@ -406,7 +406,7 @@
       display: flex;
       width: 100%;
       height: auto;
-      aspect-ratio: 7 / 1;
+      aspect-ratio: 12.5 / 1;
       overflow: hidden;
       background-color: var(--color-deep-black);
     }
@@ -582,7 +582,7 @@
 
       .mosaic-strip {
         height: auto;
-        aspect-ratio: 3 / 1;
+        aspect-ratio: 5 / 1;
       }
 
       .about-text h2 {
@@ -937,29 +937,23 @@
         '5 2.jpg', '5 3.jpg', '5.jpg', '6 2.jpg', '6.jpg', '7.jpg', '72.jpg', '9.jpg'
       ];
 
-      // Shuffle and pick 7
+      // Shuffle and pick
       const shuffled = allImages.sort(() => 0.5 - Math.random());
-      const selected = shuffled.slice(0, 7);
 
-      // Pattern: some squares, some circles to match screenshot feel
-      // Indices for circles: 2, 4, 5 (3rd, 5th, 6th)
-      const circleIndices = [2, 4, 5];
-
-      // On mobile, show fewer images so they are bigger
+      // On mobile, show fewer images
       const isMobile = window.innerWidth <= 768;
-      const count = isMobile ? 3 : 7;
-      const finalSelection = selected.slice(0, count);
+      const count = isMobile ? 5 : 12;
+      const selected = shuffled.slice(0, count);
 
-      finalSelection.forEach((imgSrc, index) => {
+      // Pattern for circles
+      const circleIndices = isMobile ? [1, 3] : [1, 4, 6, 9, 11];
+
+      selected.forEach((imgSrc, index) => {
         const item = document.createElement('div');
         item.className = 'mosaic-item';
-        // Alternate circles on mobile if showing 3
-        if (isMobile) {
-          if (index === 1) item.classList.add('circle');
-        } else {
-          if (circleIndices.includes(index)) {
-            item.classList.add('circle');
-          }
+
+        if (circleIndices.includes(index)) {
+          item.classList.add('circle');
         }
 
         const img = document.createElement('img');
